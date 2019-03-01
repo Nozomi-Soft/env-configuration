@@ -17,15 +17,26 @@ docker run -d \
 #docker start jenkins
 #docker stop jenkins
 
-docker pull mongo;
+#docker pull mongo;
 #docker run --name mongo-db mongo;
-docker run -d -p 27017:27017 --name mongo-db mongo;
+#docker run -d -p 27017:27017 --name mongo-db mongo;
 
 #init bash mongo
 #docker exec -it mongo-db bash
 
 
-docker pull sonarque;
+docker volume create dynamodbVol;
+
+docker pull amazon/dynamodb-local;
+#docker run -p 9000:8000 amazon/dynamodb-local;
+docker run -d \
+	-p 9000:8000  \
+	--name dynamodb \
+	--mount source=dynamodbVol,target=/app \
+	amazon/dynamodb-local;
+
+
+docker pull sonarqube;
 
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 
