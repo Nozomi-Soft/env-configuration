@@ -6,7 +6,7 @@ docker pull jenkins/jenkins;
 #docker run -d -p 9090:8080 -p 50000:50000 jenkins/jenkins;
 #docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts;
 docker run -d \
-	-p 9090:8080  \
+	-p 9500:8080  \
 	-p 50000:50000  \
 	--name jenkins \
 	--mount source=jenkinsVol,target=/app \
@@ -30,15 +30,16 @@ docker volume create dynamodbVol;
 docker pull amazon/dynamodb-local;
 #docker run -p 9000:8000 amazon/dynamodb-local;
 docker run -d \
-	-p 9000:8000  \
+	-p 9501:8000  \
 	--name dynamodb \
 	--mount source=dynamodbVol,target=/app \
 	amazon/dynamodb-local;
 
+#http:localhost:9501/shell
 
 docker pull sonarqube;
 
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+docker run -d --name sonarqube -p 9502:9000 sonarqube;
 
 
 docker pull analogic/poste.io;
