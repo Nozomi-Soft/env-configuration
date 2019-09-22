@@ -17,7 +17,8 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debi
 
 sudo apt-get update;
 
-sudo apt-get install docker-ce=18.06.3~ce~3-0~debian;
+#sudo apt-get install docker-ce=18.06.3~ce~3-0~debian;
+sudo apt-get install docker-ce;
 
 sudo docker run hello-world;
 
