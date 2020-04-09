@@ -23,3 +23,5 @@ sudo apt-get install docker-ce;
 sudo docker run hello-world;
 
 sudo usermod -aG docker $USER;
+
+sudo sysctl -w vm.max_map_count=262144

@@ -36,9 +36,9 @@ docker run -d \
 
 #http:localhost:9501/shell
 
-docker pull sonarqube;
+#docker pull sonarqube;
 
-docker run -d --name sonarqube -p 9502:9000 sonarqube;
+#docker run -d --name sonarqube -p 9502:9000 sonarqube;
 
 
 docker pull analogic/poste.io;
