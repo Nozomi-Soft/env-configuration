@@ -16,3 +16,7 @@ docker run -d \
 #cat /var/jenkins_home/secrets/initialAdminPassword
 #docker start jenkins
 #docker stop jenkins
+
+docker network connect nozomi-net jenkins
+
+#docker network inspect jenkins
