@@ -73,3 +73,10 @@ apt-get -y -f install google-chrome-stable;
 echo "===================================================";
 echo "#     		       google-chrome-stable             #";
 echo "===================================================";
+
+
+apt-get install pass
+pass init "my password storage key"
+echo "===================================================";
+echo "#                 password-storage-key            #";
+echo "===================================================";
