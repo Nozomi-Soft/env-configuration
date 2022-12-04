@@ -1,20 +1,20 @@
-docker pull mysql/mysql-server:latest;
+sudo docker pull mysql/mysql-server:latest;
 
-docker volume create mysqlvolume;
+sudo docker volume create mysqlvolume;
 
-#docker run --name=mysql-dev -d mysql/mysql-server:latest -p 3306:3306;
+#sudo docker run --name=mysql-dev -d mysql/mysql-server:latest -p 3306:3306;
 
-docker run -d -e MYSQL_ROOT_PASSWORD=123456 \
+sudo docker run -d -e MYSQL_ROOT_PASSWORD=123456 \
 -p 9501:3306 \
 --name mysql-dev \
 --mount source=mysqlvolume,target=/app \
 mysql/mysql-server:latest;
 
-docker logs mysql-dev;
+sudo docker logs mysql-dev;
 
-docker network connect nozomi-net mysql-dev
+sudo docker network connect nozomi-net mysql-dev
 
-#docker exec -it mysql-dev mysql -u root -p
+#sudo docker exec -it mysql-dev mysql -u root -p
 
 #ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpassword';
 
