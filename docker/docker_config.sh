@@ -26,10 +26,13 @@ sudo usermod -aG docker $USER;
 
 sudo sysctl -w vm.max_map_count=262144
 
-sudo docker network create -d bridge --subnet 10.0.0.1/24 nozomi-net
+echo "Enter a network name (my-network)";
+read NETWORK_NAME;
+
+sudo docker network create -d bridge --subnet 10.0.0.1/24 $NETWORK_NAME
 
 echo `sudo docker network ls`
 
-echo `sudo docker network inspect nozomi-net`
+echo `sudo docker network inspect $NETWORK_NAME`
 
-#docker network rm nozomi-net
+#docker network rm $NETWORK_NAME
