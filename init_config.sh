@@ -93,6 +93,12 @@ echo "===================================================================="
 apt-get -f -y install pass
 pass init "my password storage key"
 
+echo "===================================================================="
+echo "#                           node js                                #"
+echo "===================================================================="
+
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - &&\
+apt-get install -y nodejs
 
 echo "===================================================================="
 echo "#                           Done                                   #"
