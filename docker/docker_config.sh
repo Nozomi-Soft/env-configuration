@@ -1,12 +1,18 @@
 debian_ver=`lsb_release -cs`;
 
-curl -fsSl https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo install -m 0755 -d /etc/apt/keyrings
 
-echo `sudo apt-key fingerprint 0EBFCD88`;
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian ${debian_ver} stable"
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
-sudo apt-get update;
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
 
 #sudo apt-get install docker-ce=18.06.3~ce~3-0~debian;
 sudo apt-get install docker-ce;
