@@ -44,6 +44,12 @@ echo "===================================================================="
 apt-get -y install build-essential
 
 echo "===================================================================="
+echo "#                     ca-certificates                              #"
+echo "===================================================================="
+
+apt-get install -y -f ca-certificates
+
+echo "===================================================================="
 echo "#                         curl                                     #"
 echo "===================================================================="
 
@@ -103,8 +109,12 @@ echo "===================================================================="
 echo "#                           node js                                #"
 echo "===================================================================="
 
-curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - &&\
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 apt-get install -y nodejs
+
+NODE_MAJOR=18
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 
 echo "===================================================================="
 echo "#                           Done                                   #"
